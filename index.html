@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <title>MeMe Generator</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 80vh; /* Ensure the container takes at least 80% of the viewport height */
+        }
+
+        .meme-image {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .canvas-container {
+            max-width: 100%;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 1rem;
+        }
+
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+
+        .footer {
+            background-color: #3498db;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="font-roboto">
+    <div class="header">
+        <h1 class="text-4xl font-bold">😂 MeMe Generator 😂</h1>
+    </div>
+
+    <div class="container mx-auto mt-8 p-8">
+        <div class="flex flex-col md:flex-row items-center justify-center mb-8">
+            <div class="flex-1 m-2">
+                <label for="top-text" class="block mb-2">Top Text:</label>
+                <textarea class="w-full p-2 border border-gray-300 rounded" id="top-text"></textarea>
+                <label for="top-text-size-input" class="block mt-2">Text Size:</label>
+                <input type="range" id="top-text-size-input" min="0.05" max="0.25" value="0.15" step="0.01"
+                    class="w-full">
+            </div>
+
+            <div class="flex-1 m-2">
+                <label for="bottom-text" class="block mb-2">Bottom Text:</label>
+                <textarea class="w-full p-2 border border-gray-300 rounded" id="bottom-text"></textarea>
+                <label for="bottom-text-size-input" class="block mt-2">Text Size:</label>
+                <input type="range" id="bottom-text-size-input" min="0.05" max="0.25" value="0.15" step="0.01"
+                    class="w-full">
+            </div>
+        </div>
+
+        <div class="mb-8">
+            <label for="image-input" class="block mb-2">Select Image:</label>
+            <input type="file" id="image-input" accept="image/*">
+        </div>
+
+        <div class="text-center">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="generate-btn">
+                Generate!
+            </button>
+        </div>
+
+        <div class="mt-8 text-center">
+            <div class="canvas-container">
+                <canvas id="meme-canvas" title="Right click -> &quot;Save image as...&quot;"></canvas>
+            </div>
+        </div>
+
+        <img class="meme-image mx-auto mt-8" src="https://i.imgflip.com/479lwc.jpg" alt="funny">
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 MeMe Generator. All rights reserved.</p>
+    </footer>
+
+    <script src="j.js"></script>
+</body>
+
+</html>
